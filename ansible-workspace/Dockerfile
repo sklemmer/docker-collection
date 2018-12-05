@@ -1,4 +1,6 @@
-FROM debian:strech-slim
+FROM debian:stretch-slim
+
+LABEL maintainer="Sven Klemmer<sven.klemmer@ippen-digital.de"
 
 ENV ANSIBLE_VERSION: 2.7.4
 
