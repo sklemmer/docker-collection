@@ -1,0 +1,26 @@
+language: generic
+dist: xenial
+
+env:
+  - TOOL=python
+  - TOOL=awscli
+  - TOOL=ansible
+  - TOOL=kitchen
+
+services:
+  - docker
+
+before_install:
+
+before_script:
+  - cd $TOOL
+  - docker run --rm -i hadolint/hadolint < Dockerfile
+
+script:
+  - time build.sh
+
+deploy:
+  provider: script
+  script: bash release.sh
+  on:
+    branch: master
