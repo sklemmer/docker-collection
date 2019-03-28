@@ -1,5 +1,4 @@
-language: generic
-dist: xenial
+language: bash
 
 env:
   - TOOL=python
@@ -11,9 +10,9 @@ services:
   - docker
 
 before_install:
+  - cd $TOOL
 
 before_script:
-  - cd $TOOL
   - docker run --rm -i hadolint/hadolint < Dockerfile
 
 script:
