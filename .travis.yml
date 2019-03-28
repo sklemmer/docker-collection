@@ -19,6 +19,9 @@ script:
   - time bash build.sh
   - time bash test.sh || true
 
+before_deploy:
+  - echo $PWD
+
 deploy:
   provider: script
   script: bash release.sh
