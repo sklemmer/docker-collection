@@ -16,8 +16,8 @@ before_script:
   - docker run --rm -i hadolint/hadolint < Dockerfile
 
 script:
-  - time build.sh
-  - time test.sh || true
+  - time bash build.sh
+  - time bash test.sh || true
 
 deploy:
   provider: script
