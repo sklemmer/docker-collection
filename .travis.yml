@@ -20,7 +20,7 @@ script:
   - time bash test.sh || true
 
 before_deploy:
-  - echo $PWD
+  - cd ..
 
 deploy:
   provider: script
