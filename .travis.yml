@@ -17,6 +17,7 @@ before_script:
 
 script:
   - time build.sh
+  - time test.sh || true
 
 deploy:
   provider: script
