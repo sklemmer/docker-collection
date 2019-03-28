@@ -1,0 +1,26 @@
+language: bash
+
+env:
+  - TOOL=python
+  - TOOL=awscli
+  - TOOL=ansible
+  - TOOL=kitchen
+
+services:
+  - docker
+
+before_install:
+  - cd $TOOL
+
+before_script:
+  - docker run --rm -i hadolint/hadolint < Dockerfile
+
+script:
+  - time bash build.sh
+  - time bash test.sh || true
+
+deploy:
+  provider: script
+  script: bash release.sh
+  on:
+    branch: master
