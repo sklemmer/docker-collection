@@ -1,1 +1,4 @@
 # Created by .ignore support plugin (hsz.mobi)
+.idea
+pull-all.sh
+k8s/scripts/
