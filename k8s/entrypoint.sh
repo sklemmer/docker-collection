@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-
 if [[ ! -d "/root/.helm" ]]; then
   cp -R /.helm /root/.helm/
 fi
