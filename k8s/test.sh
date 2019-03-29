@@ -8,6 +8,6 @@ tools=(
     "helmsman -v"
     )
 
-for t in $(tools); do
-    docker run -it ${TOOL}:latest ${t}
+for t in "${tools[@]}"; do
+    docker run -it ${DOCKER_USERNAME}/${TOOL}:latest ${t}
 done
