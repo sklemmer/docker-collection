@@ -48,16 +48,19 @@ RUN apt-get -qq update -y \
 # image
 FROM bash:5
 
-ENV HELM_HOME="/root/.helm"
-
 COPY --from=builder /usr/local/bin/kubectl /usr/local/bin/kubectl
 COPY --from=builder /usr/local/bin/kubens  /usr/local/bin/kubens
 COPY --from=builder /usr/local/bin/kubectx /usr/local/bin/kubectx
+COPY --from=builder /usr/local/bin/aws-iam-authenticator /usr/local/bin/aws-iam-authenticator
+
+ENV HELM_HOME="/root/.helm"
 COPY --from=builder /usr/local/bin/helm /usr/local/bin/helm
 COPY --from=builder /usr/local/bin/helmsman /usr/local/bin/helmsman
-COPY --from=builder /usr/local/bin/aws-iam-authenticator /usr/local/bin/aws-iam-authenticator
-COPY --from=builder /root/.helm /.helm
+
+COPY --from=builder "${HELM_HOME}" /.helm
 
 COPY entrypoint.sh /entrypoint
+
+RUN apk add -u --no-cache ncurses==6.1_p20190105-r0
 
 ENTRYPOINT ["/entrypoint"]
