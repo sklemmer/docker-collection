@@ -48,7 +48,7 @@ RUN apt-get -qq update -y \
 # image
 FROM bash:5
 
-ENV HELM_HOME="/root/.helm"dock
+ENV HELM_HOME="/root/.helm"
 
 COPY --from=builder /usr/local/bin/kubectl /usr/local/bin/kubectl
 COPY --from=builder /usr/local/bin/kubens  /usr/local/bin/kubens
