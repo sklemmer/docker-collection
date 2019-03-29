@@ -1,15 +1,15 @@
 FROM ubuntu:bionic as builder
 
-LABEL maintainer="sklemmer@knet.network"
-
 # software versions to use, easy to adjust the main ones
-ENV AWS_IAM_AUTH_VERSION="0.3.0"
-ENV HELM_VERSION="v2.12.1"
-ENV HELM_DIFF_VERSION="v2.11.0+3"
-ENV HELM_PUSH_VERSION="v0.7.1"
-ENV HELMSMAN_VERSION="1.7.4"
-ENV KUBECTL_VERSION="v1.13.1"
-ENV KUBECTX_VERSION="v0.6.3"
+ARG AWS_IAM_AUTH_VERSION="0.3.0"
+ARG HELM_VERSION="v2.12.1"
+ARG HELM_DIFF_VERSION="v2.11.0+3"
+ARG HELM_PUSH_VERSION="v0.7.1"
+ARG HELMSMAN_VERSION="1.7.4"
+ARG KUBECTL_VERSION="v1.13.1"
+ARG KUBECTX_VERSION="v0.6.3"
+
+LABEL maintainer="sklemmer@knet.network"
 
 # Install apt-get dependencies
 RUN apt-get -qq update -y \

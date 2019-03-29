@@ -2,11 +2,11 @@ ARG DOCKER_VERSION="stable"
 
 FROM docker:${DOCKER_VERSION}
 
+ARG RUBY_VERSION="2.5.3-r1"
+
 LABEL maintainer="sklemmer@knet.network"
 
 COPY Gemfile /Gemfile
-
-ENV RUBY_VERSION="2.5.3-r1"
 
 RUN apk add --no-cache \
         openssh-client=7.9_p1-r4 \
