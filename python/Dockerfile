@@ -2,4 +2,6 @@ ARG PYTHON_VERSION="3.7-alpine"
 
 FROM python:${PYTHON_VERSION}
 
-RUN pip install pip==19.0.3 --upgrade
+ARG PYTHON_PIP_VERSION=19.0.3
+
+RUN pip install pip=="${PYTHON_PIP_VERSION}" --upgrade

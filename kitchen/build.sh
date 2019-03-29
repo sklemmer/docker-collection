@@ -4,7 +4,7 @@ latest="stable"
 versions=( "${latest}" )
 
 for version in "${versions[@]}"; do
-    docker build -t ${TOOL}:${version} --build-arg "DOCKER_VERSION=${version}" .
+    docker build -t ${DOCKER_USERNAME}/${TOOL}:${version} --build-arg "DOCKER_VERSION=${version}" .
 done
 
-docker tag ${TOOL}:${latest} ${TOOL}:latest
+docker tag ${TOOL}:${latest} ${DOCKER_USERNAME}/${TOOL}:latest

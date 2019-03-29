@@ -1,4 +1,3 @@
 #!/bin/bash
 
-docker build -t ${TOOL} .
-docker tag ${TOOL} ${TOOL}:latest
+docker build -t ${DOCKER_USERNAME}/${TOOL} .

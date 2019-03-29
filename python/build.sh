@@ -1,5 +1,5 @@
 #!/bin/bash
 
 docker build -t ${TOOL} .
-docker tag ${TOOL} ${TOOL}:latest
-docker tag ${TOOL} ${TOOL}:3.7
+docker tag ${TOOL} ${DOCKER_USERNAME}/${TOOL}:latest
+docker tag ${TOOL} ${DOCKER_USERNAME}/${TOOL}:3.7
