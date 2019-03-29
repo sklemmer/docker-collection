@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t ${TOOL}:latest .
+docker build -t ${DOCKER_USERNAME}/${TOOL}:latest .
