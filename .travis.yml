@@ -5,6 +5,7 @@ env:
   - TOOL=awscli
   - TOOL=ansible
   - TOOL=kitchen
+  - TOOL=k8s
 
 services:
   - docker

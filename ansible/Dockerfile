@@ -1,5 +1,5 @@
-ARG ANSIBLE_VERSION
 FROM sklemmer/python:3.7
+ARG ANSIBLE_VERSION
 
 RUN pip install \
         ansible=="${ANSIBLE_VERSION}" \
