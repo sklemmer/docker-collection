@@ -20,9 +20,11 @@ done
 unset _tools
 
 # now you can use it as a standalone command
-ansible --version
-ansible-playbook --version
-ansible-galaxy --version
+kubectl version
+helm version -c
+kubens -h
+kubectx -h
+helmsman -v
 ```
 
 #### as standalone command
@@ -30,5 +32,5 @@ ansible-galaxy --version
 docker run --rm -it \
     -v "$(pwd)":/tmp/$(basename "${PWD}") \
     -w /tmp/$(basename "${PWD}") sklemmer/k8s:latest \
-    kubectl --version
+    kubectl version
 ``` 
