@@ -1,17 +1,34 @@
-Ansible Workspace
-=================
-
-A simple and stupid debian based workspace for working with ansible related tasks
-
+Ansible
+=======
 
 ### Usage
+Only consider using this when you want to provision another machines
+
+#### as one alias
 ```bash
-# no AWS
-docker run -it -v $PWD:/workspace -w /workspace sklemmer/ansible-workspace /bin/bash
+alias _ansible='docker run --rm -it -v "$(pwd)":/tmp/$(basename "${PWD}") -w /tmp/$(basename "${PWD}") sklemmer/ansible:latest'
+_ansible ansible-playbook --version
+``` 
 
-# using AWS environment variables
-docker run -it -v $PWD:/workspace -w /workspace -e "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" -e "AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}" -e "AWS_DEFAULT_REGION=us-east-2" sklemmer/ansible-workspace /bin/bash
+#### as multiple aliases
+```bash
+# add this to your alias file
+_tools=(ansible ansible-playbook ansible-inventory ansible-galaxy)
+for tool in "${_tools[@]}"; do
+  alias "${tool}"='docker run --rm -it -v "$(pwd)":/tmp/$(basename "${PWD}") -w /tmp/$(basename "${PWD}") sklemmer/ansible:latest "${tool}"'
+done
+unset _tools
 
-# with AWS configuration files
-docker run -it -v $PWD:/workspace -w /workspace -v $HOME/.aws:/root/.aws:ro sklemmer/ansible-workspace /bin/bash
-```
+# now you can use it as a standalone command
+ansible --version
+ansible-playbook --version
+ansible-galaxy --version
+``` 
+
+#### as standalone command
+```bash
+docker run --rm -it \
+    -v "$(pwd)":/tmp/$(basename "${PWD}") \
+    -w /tmp/$(basename "${PWD}") sklemmer/ansible:latest \
+    ansible-playbook --version
+``` 
