@@ -17,7 +17,7 @@ before_script:
   - docker run --rm -i hadolint/hadolint < Dockerfile
 
 script:
-  - time bash build.sh
+  - time bash build.sh || docker build -t ${DOCKER_USERNAME}/${TOOL}:latest .
   - time bash test.sh || true
 
 before_deploy:
