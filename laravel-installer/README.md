@@ -1,4 +1,4 @@
-Kubernetes Tools
+Laravel Installer Tool
 =======
 
 ### Usage
